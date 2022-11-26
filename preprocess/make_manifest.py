@@ -151,7 +151,7 @@ def save_dict(args, transcripts, dict_name='dict.ltr.txt', alphabet_name='alphab
 
     ## write ltr
     vocab_freq, vocab_list = zip(*sorted(zip(vocab_freq, vocab_list), reverse=True))
-    with open(os.path.join(args.dest, dict_name), 'w') as write_f:
+    with open(os.path.join(args.dest, dict_name), 'w', encoding='utf8') as write_f:
         for idx, (grpm, freq) in enumerate(zip(vocab_list, vocab_freq)):
             print("{} {}".format(grpm, freq), file=write_f)
 
@@ -189,10 +189,10 @@ def save_lexicon(args, texts, lexicon_name='lexicon.lst'):
 
 
 def save_files(args, file_name, dir_path, fileinfo, texts, transcripts):
-    with open(os.path.join(args.dest, file_name + ".tsv"), 'w') as tsv_out, open(
-            os.path.join(args.dest, file_name + ".ltr"), "w"
+    with open(os.path.join(args.dest, file_name + ".tsv"), 'w', encoding='utf8') as tsv_out, open(
+            os.path.join(args.dest, file_name + ".ltr"), "w", encoding='utf8'
     ) as ltr_out, open(
-        os.path.join(args.dest, file_name + ".wrd"), "w"
+        os.path.join(args.dest, file_name + ".wrd"), "w", encoding='utf8'
     ) as wrd_out:
 
         print(dir_path, file=tsv_out)
@@ -243,8 +243,9 @@ def load_script(args, script_path, info_data, token_limit=sys.maxsize):
     reg = re.compile(r'.*[a-zA-Z0-9]')
     limit_count = 0
     remove_count = 0
-    with open(script_path, "r") as f:
-        for line in tqdm(f):
+    with open(script_path, "r", encoding='utf8') as f:
+        for i, line in tqdm(enumerate(f)):
+            if i >= 100: break
             convert_flag = False
 
             items = line.split(" :: ")

@@ -1,3 +1,8 @@
+eval_log
+outputs
+save_checkpoint
+transcriptions
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

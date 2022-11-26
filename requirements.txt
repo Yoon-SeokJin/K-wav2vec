@@ -1,5 +1,5 @@
-torch
-torchaudio
+torch==1.7.1+cu110
+torchaudio==0.7.2
 extension_helpers
 numpy
 jinja2
@@ -10,8 +10,10 @@ pyctcdecode
 librosa
 tqdm
 pyyaml
-omegaconf
+antlr4-python3-runtime==4.8
+omegaconf==2.1
 hydra-core==1.0
 cython
 setuptools
 kenlm
+pandas

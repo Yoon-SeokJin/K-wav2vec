@@ -333,7 +333,7 @@ class BeamDecoder(object):
         # convert space character representation
         vocab_list[blank_idx] = " "
         # specify ctc blank char index, since conventionally it is the last entry of the logit matrix
-        alphabet = Alphabet.build_alphabet(vocab_list, ctc_token_idx=0)
+        alphabet = Alphabet.build_alphabet(vocab_list)
 
         # build the decoder and decode the logits
         self.decoder = BeamSearchDecoderCTC(alphabet)
@@ -354,7 +354,7 @@ class BeamDecoder(object):
             # convert space character representation
             add_vocab_list[add_blank_idx] = " "
             # specify ctc blank char index, since conventionally it is the last entry of the logit matrix
-            add_alphabet = Alphabet.build_alphabet(add_vocab_list, ctc_token_idx=0)
+            add_alphabet = Alphabet.build_alphabet(add_vocab_list)
 
             # build the decoder and decode the logits
             self.add_decoder = BeamSearchDecoderCTC(add_alphabet)
