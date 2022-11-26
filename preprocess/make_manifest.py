@@ -244,8 +244,7 @@ def load_script(args, script_path, info_data, token_limit=sys.maxsize):
     limit_count = 0
     remove_count = 0
     with open(script_path, "r", encoding='utf8') as f:
-        for i, line in tqdm(enumerate(f)):
-            if i >= 100: break
+        for line in tqdm(f):
             convert_flag = False
 
             items = line.split(" :: ")
